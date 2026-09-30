@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MatchBook  -  Interview Guide | Riha Sanjay Kokode</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0c10;--surface:#111318;--card:#161a22;--border:#232836;--text:#dde3f0;--muted:#6b7694;--bright:#fff;--blue:#5b9cf6;--gold:#f0b429;--green:#3ecf8e;--red:#f04e4e;--purple:#b57bee;--teal:#38d9d9;--orange:#f59e0b;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Lora',Georgia,serif;font-size:15px;line-height:1.8;}
+.topbar{position:sticky;top:0;z-index:200;background:rgba(10,12,16,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.topbar-inner{display:flex;align-items:center;padding:0 24px;overflow-x:auto;scrollbar-width:none;}
+.topbar-inner::-webkit-scrollbar{display:none;}
+.topbar-brand{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--gold);white-space:nowrap;padding:14px 20px 14px 0;border-right:1px solid var(--border);margin-right:12px;}
+.topbar a{display:block;padding:13px 12px;text-decoration:none;color:var(--muted);font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.5px;white-space:nowrap;border-bottom:2px solid transparent;text-transform:uppercase;}
+.topbar a:hover{color:var(--bright);border-color:var(--gold);}
+.hero{background:linear-gradient(135deg,#0a0c10 0%,#0d1119 40%,#101520 100%);padding:56px 48px 44px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(91,156,246,.08) 0%,transparent 65%);pointer-events:none;}
+.hero-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,5vw,3.2rem);font-weight:800;color:var(--bright);line-height:1.05;}
+.hero h1 em{font-style:normal;color:var(--blue);}
+.hero-sub{margin-top:12px;color:var(--muted);font-size:14px;max-width:760px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.hero-tag{background:rgba(91,156,246,.1);border:1px solid rgba(91,156,246,.25);color:var(--blue);font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:20px;}
+.main{max-width:1000px;margin:0 auto;padding:0 28px 100px;}
+.section{padding-top:60px;}
+[id]{scroll-margin-top:54px;}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.sec-title{font-family:'Syne',sans-serif;font-size:1.75rem;font-weight:800;color:var(--bright);margin-bottom:6px;line-height:1.1;}
+.sec-intro{color:#a8b4cc;font-size:14.5px;line-height:1.85;margin-bottom:24px;max-width:840px;border-left:3px solid var(--border);padding-left:16px;}
+.sec-intro strong{color:var(--bright);}
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+.concept-grid.three-col{grid-template-columns:repeat(3,1fr);}
+@media(max-width:680px){.concept-grid,.concept-grid.three-col,.six-grid,.split-two{grid-template-columns:1fr;}}
+.concept-card{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--blue);border-radius:8px;padding:20px;}
+.concept-card.gold{border-top-color:var(--gold);}
+.concept-card.green{border-top-color:var(--green);}
+.concept-card.teal{border-top-color:var(--teal);}
+.concept-card.purple{border-top-color:var(--purple);}
+.concept-card.red{border-top-color:var(--red);}
+.concept-card h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;color:var(--bright);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;}
+.concept-card p,.concept-card ul,.concept-card ol{color:#9daabf;font-size:13px;line-height:1.75;}
+.concept-card p+p{margin-top:8px;}
+.concept-card ul,.concept-card ol{padding-left:0;list-style:none;}
+.concept-card ul li,.concept-card ol li{padding:2px 0 2px 14px;position:relative;}
+.concept-card ul li::before{content:'›';position:absolute;left:0;color:var(--gold);}
+.concept-card strong{color:var(--bright);}
+.flow-container{display:flex;align-items:flex-start;flex-wrap:wrap;gap:6px;margin-bottom:24px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.flow-step{flex:1;min-width:90px;background:rgba(91,156,246,.07);border:1px solid rgba(91,156,246,.2);border-radius:8px;padding:12px 8px;text-align:center;}
+.flow-icon{font-size:1.3rem;margin-bottom:5px;}
+.flow-name{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--bright);margin-bottom:3px;}
+.flow-desc{font-size:10px;color:var(--muted);line-height:1.4;}
+.flow-arrow{align-self:center;color:var(--gold);font-size:1.1rem;padding:0 4px;flex-shrink:0;}
+.code-block{background:#0d1117;border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#79c0ff;margin-top:8px;overflow-x:auto;white-space:pre;}
+.comparison-table{overflow-x:auto;margin:14px 0;}
+.comparison-table table{width:100%;border-collapse:collapse;}
+.comparison-table th{background:rgba(91,156,246,.08);color:var(--blue);font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);}
+.comparison-table td{padding:9px 12px;border-bottom:1px solid rgba(35,40,54,.5);font-size:12.5px;color:#9daabf;vertical-align:top;}
+.comparison-table strong{color:var(--bright);}
+.qa-block{margin:14px 0;}
+.qa{margin-bottom:14px;}
+.q{background:rgba(240,180,41,.07);border:1px solid rgba(240,180,41,.2);border-radius:6px 6px 0 0;padding:11px 16px;font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--gold);}
+.a{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 6px 6px;padding:13px 16px;font-size:13px;color:#9daabf;line-height:1.8;}
+.a strong{color:var(--green);}
+.script-box{background:rgba(91,156,246,.06);border:1px solid rgba(91,156,246,.2);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:18px 22px;margin:14px 0;font-size:14px;color:#c8d4e8;line-height:1.9;font-style:italic;}
+.script-box strong{color:var(--bright);font-style:normal;}
+.highlight-box{background:rgba(240,78,78,.05);border:1px solid rgba(240,78,78,.2);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0;font-size:13px;color:#c8a4a4;}
+.highlight-box strong{color:var(--bright);}
+.tip-box{background:rgba(62,207,142,.06);border:1px solid rgba(62,207,142,.2);border-left:4px solid var(--green);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0;font-size:13px;color:#9dbfb0;}
+.tip-box strong{color:var(--bright);}
+.subsection{margin-bottom:28px;}
+.subsection h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--bright);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+.scrolltop{position:fixed;bottom:24px;right:24px;background:var(--gold);color:#000;border:none;cursor:pointer;width:42px;height:42px;border-radius:50%;font-size:1.1rem;z-index:999;}
+.six-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;}
+.six-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+.six-item .n{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);font-weight:600;margin-bottom:4px;}
+.six-item h5{font-family:'Syne',sans-serif;font-size:12px;color:var(--bright);margin-bottom:6px;}
+.six-item p{font-size:12.5px;color:#9daabf;line-height:1.65;}
+.vflow{display:flex;flex-direction:column;align-items:center;gap:0;margin:18px 0 24px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px 18px;}
+.vflow-step{width:100%;max-width:740px;background:rgba(91,156,246,.07);border:1px solid rgba(91,156,246,.22);border-radius:8px;padding:14px 18px;}
+.vflow-step .vn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);font-weight:600;margin-bottom:4px;}
+.vflow-step h5{font-family:'Syne',sans-serif;font-size:13px;color:var(--bright);margin-bottom:4px;}
+.vflow-step p{font-size:12.5px;color:#9daabf;line-height:1.65;margin:0;}
+.vflow-arrow{color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:14px;padding:6px 0;}
+.mermaid{background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:16px;margin:12px 0;}
+.split-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+.stat-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 22px;}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;min-width:120px;text-align:center;}
+.stat .num{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--bright);}
+.stat .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-family:'Syne',sans-serif;}
+.book{font-family:'JetBrains Mono',monospace;font-size:12px;background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:#8b9bb4;line-height:1.7;white-space:pre;}
+.book .b{color:var(--green);}
+.book .s{color:var(--red);}
+.book .t{color:var(--gold);}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: { primaryColor: '#1a2332', primaryTextColor: '#dde3f0', primaryBorderColor: '#5b9cf6', lineColor: '#f0b429', secondaryColor: '#161a22', tertiaryColor: '#0d1117' }});
+</script>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">MATCHBOOK</div>
+    <a href="#path">Path</a>
+    <a href="#zero">From Zero</a>
+    <a href="#pitch">Pitch</a>
+    <a href="#arch">Architecture</a>
+    <a href="#ds">Data Structures</a>
+    <a href="#walk">Walkthrough</a>
+    <a href="#method">Method</a>
+    <a href="#tech">Tech Why</a>
+    <a href="#files">Files</a>
+    <a href="#honest">Honesty</a>
+    <a href="#qa">Q&amp;A</a>
+    <a href="#board">Whiteboard</a>
+    <a href="#improve">Improve</a>
+    <a href="#quick">Quick</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Project Interview Study Guide · From Scratch</div>
+  <h1>MatchBook<br><em>In-Memory Limit Order Book</em></h1>
+  <p class="hero-sub">Learn the project as if you never wrote it: what an order book is, how bids/asks match, why these C++ data structures, how the CSV replay and latency numbers work, and exactly what to say (and never say) at Pace.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">C++17</span>
+    <span class="hero-tag">STL map + deque</span>
+    <span class="hero-tag">Price-time priority</span>
+    <span class="hero-tag">Partial fills</span>
+    <span class="hero-tag">CSV replay</span>
+    <span class="hero-tag">chrono</span>
+    <span class="hero-tag">Pace HFT</span>
+  </div>
+</div>
+
+<div class="main">
+
+<div id="path" class="section">
+  <div class="sec-label">00</div>
+  <h2 class="sec-title">How to study this (60 minutes)</h2>
+  <p class="sec-intro">You do not need finance background. Read in this order. Then open the three source files and point at the functions.</p>
+  <div class="six-grid">
+    <div class="six-item"><div class="n">10 min</div><h5>From Zero</h5><p>Bids, asks, limit order, match, partial fill. If these words are fuzzy, stop here until they are not.</p></div>
+    <div class="six-item"><div class="n">10 min</div><h5>Pitch + architecture</h5><p>Say the 45-second story. Point at the diagram: add → book → match → trades.</p></div>
+    <div class="six-item"><div class="n">15 min</div><h5>Numeric walkthrough</h5><p>Work the demo on paper. This is what Pace will ask you to draw.</p></div>
+    <div class="six-item"><div class="n">10 min</div><h5>Data structures</h5><p>Why map, why deque, why unordered_map for cancel. Complexity table.</p></div>
+    <div class="six-item"><div class="n">10 min</div><h5>Honesty + Q&amp;A</h5><p>What the code does not do. Then the likely interview questions.</p></div>
+    <div class="six-item"><div class="n">5 min</div><h5>Open the code</h5><p><code>OrderBook.cpp</code> is the whole engine. <code>main.cpp</code> is demo + CSV + benchmark.</p></div>
+  </div>
+  <div class="tip-box"><strong>Pace will literally ask “design an order book.”</strong> This project is that answer, implemented. Memorise the walkthrough, not the README.</div>
+</div>
+
+<div id="zero" class="section">
+  <div class="sec-label">01</div>
+  <h2 class="sec-title">From zero  -  what is an order book?</h2>
+  <p class="sec-intro">A stock exchange is a shop where people shout prices. The <strong>order book</strong> is the notebook of all standing offers. MatchBook is that notebook in C++ RAM.</p>
+
+  <div class="concept-grid">
+    <div class="concept-card green">
+      <h4>Bid (buy)</h4>
+      <p>Someone wants to <strong>buy</strong>. “I will pay at most 100.” Higher bid is more aggressive. Best bid = highest buy price.</p>
+    </div>
+    <div class="concept-card red">
+      <h4>Ask (sell)</h4>
+      <p>Someone wants to <strong>sell</strong>. “I will take at least 101.” Lower ask is more aggressive. Best ask = lowest sell price.</p>
+    </div>
+    <div class="concept-card gold">
+      <h4>Limit order</h4>
+      <p>An order with a price cap/floor and a size. That is all MatchBook accepts. We do <strong>not</strong> implement market orders (“buy now at any price”).</p>
+    </div>
+    <div class="concept-card purple">
+      <h4>When do they trade?</h4>
+      <p>When <strong>best bid ≥ best ask</strong>. Buyer is willing to pay at least what the seller wants. That overlap is a <strong>match</strong>. A <strong>trade</strong> is the fill.</p>
+    </div>
+  </div>
+
+  <div class="concept-grid three-col">
+    <div class="concept-card teal">
+      <h4>Price priority</h4>
+      <p>Better price goes first. Buy 102 beats buy 100. Sell 99 beats sell 101.</p>
+    </div>
+    <div class="concept-card">
+      <h4>Time priority</h4>
+      <p>Same price: whoever arrived first fills first. That is why each price is a <strong>FIFO queue</strong>.</p>
+    </div>
+    <div class="concept-card gold">
+      <h4>Partial fill</h4>
+      <p>Buy 7 vs sell 10 → trade 7. Seller still has 3 resting. Leftover size is <code>buy_remaining</code> / <code>sell_remaining</code>.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box"><strong>Spread:</strong> if best bid is 100 and best ask is 101, nothing matches. The gap of 1 is the spread. Orders rest until someone crosses.</div>
+</div>
+
+<div id="pitch" class="section">
+  <div class="sec-label">02</div>
+  <h2 class="sec-title">Elevator pitch (45-60 seconds)</h2>
+  <div class="script-box">
+    “I built <strong>MatchBook</strong>, an in-memory C++ limit order book. Bids and asks live in price-ordered maps. Each price level is a FIFO queue, so better prices match first and equal prices follow arrival order. I implemented add, cancel, and match for limit orders, including partial fills. I replay a tick CSV as a simple back-test and use <code>chrono</code> to measure matching throughput and per-order latency. Matching is single-threaded, which is how most low-latency books avoid lock contention on the hot path.”
+  </div>
+  <div class="six-grid">
+    <div class="six-item"><div class="n">01</div><h5>Problem</h5><p>Need a correct, fast in-memory matcher: price-time priority, cancel, partial fills, measurable latency.</p></div>
+    <div class="six-item"><div class="n">02</div><h5>Architecture</h5><p>OrderBook in RAM. map of deques + id index. addLimit → match loop → Trade log. CSV feeder + benchmark in main.</p></div>
+    <div class="six-item"><div class="n">03</div><h5>Why this stack</h5><p>C++17 + STL only. No DB on the hot path. Integers for price. chrono for timing.</p></div>
+    <div class="six-item"><div class="n">04</div><h5>What I built</h5><p>add / cancel / match, leftover qty on trades, tick replay, 100k-order micro-benchmark.</p></div>
+    <div class="six-item"><div class="n">05</div><h5>Challenges</h5><p>Cancel in a deque is O(level). Iterator safety on pop. Pricing rule (we fill at ask price).</p></div>
+    <div class="six-item"><div class="n">06</div><h5>Evaluation</h5><p>Worked demo; CSV replay counts; mean microseconds / orders per second. Not an exchange SLA.</p></div>
+  </div>
+</div>
+
+<div id="arch" class="section">
+  <div class="sec-label">03</div>
+  <h2 class="sec-title">Architecture</h2>
+  <p class="sec-intro">One class does the matching. <code>main</code> is three clients: a tiny demo, a CSV replay, and a random-order benchmark.</p>
+
+  <pre class="mermaid">
+flowchart LR
+  CSV[tick CSV] --> Main
+  Demo[demo orders] --> Main
+  Bench[random 100k] --> Main
+  Main[main.cpp] --> OB[OrderBook]
+  OB --> Bids[bids map max-price first]
+  OB --> Asks[asks map min-price first]
+  OB --> Idx[unordered_map id to side+price]
+  OB --> Trades[vector of Trade]
+  Bids --> Match[match while bid >= ask]
+  Asks --> Match
+  Match --> Trades
+  </pre>
+
+  <div class="flow-container">
+    <div class="flow-step"><div class="flow-icon">1</div><div class="flow-name">addLimit</div><div class="flow-desc">id++, push_back on that price queue</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-icon">2</div><div class="flow-name">index</div><div class="flow-desc">id → (side, price) for cancel</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-icon">3</div><div class="flow-name">match</div><div class="flow-desc">while bestBid ≥ bestAsk</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-icon">4</div><div class="flow-name">trade</div><div class="flow-desc">min(qty), leftover, pop if 0</div></div>
+  </div>
+</div>
+
+<div id="ds" class="section">
+  <div class="sec-label">04</div>
+  <h2 class="sec-title">Data structures  -  why these, not that</h2>
+
+  <div class="comparison-table">
+    <table>
+      <tr><th>Piece</th><th>Type in code</th><th>Why</th><th>If they ask “why not X”</th></tr>
+      <tr><td><strong>Bids</strong></td><td><code>map&lt;price, deque&lt;Order&gt;, greater&gt;</code></td><td>Sorted high→low. <code>begin()</code> is best bid.</td><td>Hash map has no order. Heap of all orders mixes prices and times.</td></tr>
+      <tr><td><strong>Asks</strong></td><td><code>map&lt;price, deque&lt;Order&gt;, less&gt;</code></td><td>Sorted low→high. <code>begin()</code> is best ask.</td><td>Same as bids, opposite order.</td></tr>
+      <tr><td><strong>Level</strong></td><td><code>deque&lt;Order&gt;</code></td><td>FIFO: push_back new, pop_front to match.</td><td>vector erase-front is O(n). list is FIFO but worse cache.</td></tr>
+      <tr><td><strong>Cancel index</strong></td><td><code>unordered_map&lt;id, Locator&gt;</code></td><td>Find which side/price in O(1), then scan that level.</td><td>Scanning the whole book for cancel is too slow.</td></tr>
+      <tr><td><strong>Price / qty</strong></td><td><code>int64_t</code></td><td>Ticks. No floating-point money bugs.</td><td>double prices fail equality and rounding.</td></tr>
+    </table>
+  </div>
+
+  <div class="comparison-table">
+    <table>
+      <tr><th>Operation</th><th>Cost in this code</th><th>Say this</th></tr>
+      <tr><td>Add</td><td>O(log P) + match</td><td>P = number of distinct prices, not number of orders.</td></tr>
+      <tr><td>Match one fill</td><td>O(1) at the two fronts</td><td>We only look at best bid and best ask.</td></tr>
+      <tr><td>Cancel</td><td>O(1) lookup + O(L) scan</td><td>L = orders at that price. Honest: not O(1) erase.</td></tr>
+    </table>
+  </div>
+
+  <div class="tip-box"><strong>Why single-threaded:</strong> the book is shared mutable state. One thread means no lock on every add. Real matching engines often pin one core to one symbol. Threads belong in ShelfLock (checkout), not here.</div>
+</div>
+
+<div id="walk" class="section">
+  <div class="sec-label">05</div>
+  <h2 class="sec-title">Worked example (draw this)</h2>
+  <p class="sec-intro">This is the demo in <code>main.cpp</code>. Practise saying it out loud while drawing two columns: BIDS | ASKS.</p>
+
+  <div class="subsection">
+    <h3>Step 1  -  sell 10 @ 101</h3>
+    <div class="book">BIDS                  ASKS
+(empty)               101 : [id1 qty=10]   <span class="s">best ask = 101</span></div>
+    <p class="sec-intro" style="margin-top:12px;">No bid yet. Nothing matches. Order rests.</p>
+  </div>
+
+  <div class="subsection">
+    <h3>Step 2  -  buy 4 @ 100</h3>
+    <div class="book">BIDS                        ASKS
+100 : [id2 qty=4]           101 : [id1 qty=10]
+<span class="b">best bid = 100</span>             <span class="s">best ask = 101</span>
+100 &lt; 101 → no match</div>
+  </div>
+
+  <div class="subsection">
+    <h3>Step 3  -  buy 7 @ 101 (crosses)</h3>
+    <p>Best bid becomes 101, which is ≥ 101. Match <code>min(7,10) = 7</code>.</p>
+    <div class="book"><span class="t">TRADE</span>  buy=id3  sell=id1  px=101  qty=7
+        buy_remaining=0  sell_remaining=3
+
+BIDS                  ASKS
+100 : [id2 qty=4]     101 : [id1 qty=3]
+id3 fully filled (partial fill of the sell)</div>
+  </div>
+
+  <div class="subsection">
+    <h3>Step 4  -  cancel sell id1</h3>
+    <p>Index says id1 is a sell at 101. Scan that deque, erase it. Ask level 101 disappears.</p>
+    <div class="book">BIDS                  ASKS
+100 : [id2 qty=4]     (empty)</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa">
+      <div class="q">Q: Where is the partial fill?</div>
+      <div class="a">The sell wanted 10, only 7 traded. <code>sell_remaining=3</code>. The buy of 7 is fully filled so it is popped. That is a partial fill of the <strong>resting</strong> order.</div>
+    </div>
+    <div class="qa">
+      <div class="q">Q: At what price do we trade?</div>
+      <div class="a">This code sets <code>t.price = ask_px</code> (the sell price). In the demo both sides are 101 so it does not matter. If a buy at 105 hits a sell at 101, we print 101. <strong>Say:</strong> “I fill at the ask. A common exchange rule is maker/resting price. Mine is a simplification.”</div>
+    </div>
+  </div>
+</div>
+
+<div id="method" class="section">
+  <div class="sec-label">06</div>
+  <h2 class="sec-title">Methodology  -  how it actually runs</h2>
+
+  <div class="vflow">
+    <div class="vflow-step"><div class="vn">A</div><h5>Build</h5><p>CMake, C++17, no extra libraries. Binary: <code>matchbook</code>.</p></div>
+    <div class="vflow-arrow">↓</div>
+    <div class="vflow-step"><div class="vn">B</div><h5>Demo path</h5><p>Hard-coded add/cancel in <code>main</code> to prove match + leftover qty + cancel.</p></div>
+    <div class="vflow-arrow">↓</div>
+    <div class="vflow-step"><div class="vn">C</div><h5>CSV back-test</h5><p>Read <code>data/ticks.csv</code> rows <code>ts,side,price,qty</code>. Each row is one limit order fed in time order. Count trades and remaining levels.</p></div>
+    <div class="vflow-arrow">↓</div>
+    <div class="vflow-step"><div class="vn">D</div><h5>Benchmark</h5><p>100,000 random limit orders, prices 90-110. <code>steady_clock</code> around each <code>addLimit</code>. Report total ms, orders/s, mean microseconds.</p></div>
+  </div>
+
+  <div class="highlight-box"><strong>What “back-test” means here:</strong> replay historical-style ticks through the matcher and see what fills. It is <strong>not</strong> a strategy PnL back-test (no cash account, no signal). Pace JD says “back-testing infrastructure that emulates market conditions.” Tick replay is the honest student version. Say “simple back-test,” which is what the resume says.</div>
+
+  <div class="comparison-table">
+    <table>
+      <tr><th>Metric</th><th>How</th><th>Do not claim</th></tr>
+      <tr><td>Throughput</td><td>n / wall seconds</td><td>“Nanosecond matching” or “faster than NSE”</td></tr>
+      <tr><td>Per-order latency</td><td>mean of 100k <code>chrono</code> samples</td><td>p99, jitter, kernel bypass</td></tr>
+      <tr><td>Correctness</td><td>Demo leftovers + cancel; CSV finishes without crash</td><td>Official exchange conformance tests</td></tr>
+    </table>
+  </div>
+</div>
+
+<div id="tech" class="section">
+  <div class="sec-label">07</div>
+  <h2 class="sec-title">Tech stack  -  why each piece</h2>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <h4>C++17</h4>
+      <p>Pace language. Structured bindings not required. We use <code>auto</code>, <code>steady_clock</code>, STL.</p>
+    </div>
+    <div class="concept-card gold">
+      <h4>STL map / deque</h4>
+      <p>Enough to implement price-time priority without Boost or a custom tree. Interviewers can read it on a whiteboard.</p>
+    </div>
+    <div class="concept-card green">
+      <h4>CSV, not Postgres</h4>
+      <p>Hot path is RAM. A database would add milliseconds. CSV is the market-data stand-in.</p>
+    </div>
+    <div class="concept-card purple">
+      <h4>chrono</h4>
+      <p>JD: profile and benchmark. We time the match call, not the whole process.</p>
+    </div>
+  </div>
+  <div class="tip-box"><strong>Not in v1 on purpose:</strong> Boost, Redis, FIX, Kafka, lock-free queues, GPU, floating prices, market orders, multiple symbols, networking. If they ask “would you add X?”  -  yes later, not in this repo.</div>
+</div>
+
+<div id="files" class="section">
+  <div class="sec-label">08</div>
+  <h2 class="sec-title">File map (open these in interview)</h2>
+  <div class="comparison-table">
+    <table>
+      <tr><th>File</th><th>What to say</th></tr>
+      <tr><td><code>include/OrderBook.h</code></td><td>Order, Trade, two maps, cancel index, API: addLimit, cancel, match.</td></tr>
+      <tr><td><code>src/OrderBook.cpp</code></td><td>The engine. Walk add → match while loop → pop empty levels.</td></tr>
+      <tr><td><code>src/main.cpp</code></td><td>Demo, <code>loadTicks</code>, 100k benchmark.</td></tr>
+      <tr><td><code>data/ticks.csv</code></td><td>Synthetic tape: B/S, integer price, qty.</td></tr>
+      <tr><td><code>CMakeLists.txt</code></td><td>C++17, no find_package besides compiler.</td></tr>
+    </table>
+  </div>
+  <div class="code-block">while (!bids_.empty() && !asks_.empty()
+       && bids_.begin()->first >= asks_.begin()->first) {
+    // take fronts, trade min(qty), reduce, pop if zero
+}</div>
+</div>
+
+<div id="honest" class="section">
+  <div class="sec-label">09</div>
+  <h2 class="sec-title">Honesty  -  never invent this</h2>
+  <div class="highlight-box">
+    <strong>Do not say:</strong> lock-free, FPGA, kernel bypass, 100 GbE, FIX gateway, nanosecond SLA, production exchange, multi-asset matching, official back-test with PnL.
+    <br><br>
+    <strong>Do say if asked:</strong> cancel scans the price-level deque so it is O(L). Fill price is the ask. One instrument, memory only. Benchmark is a laptop micro-benchmark.
+  </div>
+  <div class="split-two">
+    <div class="concept-card green">
+      <h4>On the resume  -  true</h4>
+      <ul>
+        <li>Price-ordered maps of FIFO queues</li>
+        <li>Add, cancel, match, partial fills</li>
+        <li>Throughput + per-order latency</li>
+        <li>Tick CSV replay as a simple back-test</li>
+      </ul>
+    </div>
+    <div class="concept-card red">
+      <h4>Not in the code</h4>
+      <ul>
+        <li>Threads on the matcher</li>
+        <li>Network / market-data feed</li>
+        <li>Stop orders, iceberg, market orders</li>
+        <li>Persistence of the book</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="qa" class="section">
+  <div class="sec-label">10</div>
+  <h2 class="sec-title">Likely questions</h2>
+  <div class="qa-block">
+    <div class="qa"><div class="q">Q: Walk me through MatchBook.</div><div class="a">Pitch + draw bids/asks + the 4-step demo. End with: “CSV replay and a 100k chrono benchmark live in main, not in the book.”</div></div>
+    <div class="qa"><div class="q">Q: Why map of queues, not one big heap?</div><div class="a">Price and time are different keys. A heap of orders makes “best price” easy but cancelling and FIFO-at-same-price messy. Map keeps prices ordered; deque keeps arrival order inside a price.</div></div>
+    <div class="qa"><div class="q">Q: How does cancel work?</div><div class="a">unordered_map gives side and price. I scan that deque for the id and erase. I did not store list iterators, so cancel is O(level size), not O(1). I would switch to <code>list</code> + iterator in the index if cancel became hot.</div></div>
+    <div class="qa"><div class="q">Q: Why not multithreaded matching?</div><div class="a">The book is one object. Two threads adding would need a lock on every order and could reorder time priority. Low-latency shops usually give one symbol to one thread.</div></div>
+    <div class="qa"><div class="q">Q: How would you make it faster?</div><div class="a">Integer prices already. Next: flatten top-of-book into arrays, object pool for orders, avoid allocating per add, maybe a custom price ladder. I would measure before rewriting  -  that is what the chrono loop is for.</div></div>
+    <div class="qa"><div class="q">Q: What is a tick?</div><div class="a">A market event in time. In my CSV: timestamp, side, price, qty. I treat each as a new limit order.</div></div>
+    <div class="qa"><div class="q">Q: Design an order book on the board.</div><div class="a">Two sorted maps, FIFO per level, id index, match while bid≥ask, partial fill with leftover qty. That is this repo.</div></div>
+    <div class="qa"><div class="q">Q: Difference vs ShelfLock?</div><div class="a">MatchBook is in-memory matching, single-threaded, latency. ShelfLock is inventory + Postgres + threads because checkout must survive process restart and concurrent buyers.</div></div>
+  </div>
+</div>
+
+<div id="board" class="section">
+  <div class="sec-label">11</div>
+  <h2 class="sec-title">Whiteboard script</h2>
+  <ol class="sec-intro" style="padding-left:20px;">
+    <li>Write two columns: BIDS (high→low) and ASKS (low→high).</li>
+    <li>Say “each cell is a FIFO queue.”</li>
+    <li>Draw match condition: top bid ≥ top ask.</li>
+    <li>Run sell 10@101, buy 4@100, buy 7@101.</li>
+    <li>Write TRADE 7, leftover 3 on the sell.</li>
+    <li>Say cancel uses id → (side, price).</li>
+    <li>If they ask scale: “one book per symbol, one thread.”</li>
+  </ol>
+</div>
+
+<div id="improve" class="section">
+  <div class="sec-label">12</div>
+  <h2 class="sec-title">If they ask “what next?”</h2>
+  <div class="concept-grid three-col">
+    <div class="concept-card"><h4>Correctness</h4><p>O(1) cancel with list iterators. Maker-price rule. Unit tests for same-price FIFO.</p></div>
+    <div class="concept-card gold"><h4>Market data</h4><p>Real tick file, not 8 synthetic rows. Multiple symbols.</p></div>
+    <div class="concept-card green"><h4>Latency</h4><p>Histogram / p99, not only mean. Warm-up iterations before timing.</p></div>
+  </div>
+</div>
+
+<div id="quick" class="section">
+  <div class="sec-label">13</div>
+  <h2 class="sec-title">Quick hits</h2>
+  <div class="stat-row">
+    <div class="stat"><div class="num">C++17</div><div class="lbl">Language</div></div>
+    <div class="stat"><div class="num">1 thread</div><div class="lbl">Matcher</div></div>
+    <div class="stat"><div class="num">map+deque</div><div class="lbl">Book</div></div>
+    <div class="stat"><div class="num">int64</div><div class="lbl">Price ticks</div></div>
+    <div class="stat"><div class="num">100k</div><div class="lbl">Benchmark n</div></div>
+  </div>
+  <div class="script-box">One line: “In-memory C++ book: sorted prices, FIFO at each price, match while bid ≥ ask, leftover qty, CSV replay, chrono.”</div>
+</div>
+
+</div>
+<button class="scrolltop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</body>
+</html>
