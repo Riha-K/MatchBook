@@ -1,6 +1,6 @@
 # MatchBook
 
-C++ matching engine that keeps bids and asks in memory, matches trades by price-time priority, and measures latency.
+C++ matching engine that keeps bids and asks in memory, matches trades by price-time priority, and measures latency. Better prices match first. Equal prices follow arrival order. Partial fills stay on the book.
 
 ## Stack
 
