@@ -1,5 +1,6 @@
 #include "OrderBook.h"
 
+#include <cctype>
 #include <chrono>
 #include <cstdint>
 #include <fstream>
@@ -50,6 +51,9 @@ std::vector<Tick> loadTicks(const std::string& path) {
         side = trim(side);
         price = trim(price);
         qty = trim(qty);
+        for (char& c : side) {
+            c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
+        }
         if (side != "B" && side != "BUY" && side != "S" && side != "SELL") {
             throw std::runtime_error("bad tick side: " + line);
         }
@@ -122,9 +126,10 @@ int main(int argc, char** argv) {
         for (double u : us_per_order) {
             sum += u;
         }
+        const double seconds = total_ms / 1000.0;
         std::cout << std::fixed << std::setprecision(3);
         std::cout << "n=" << n << " total_ms=" << total_ms
-                  << " throughput=" << (n / (total_ms / 1000.0)) << " orders/s"
+                  << " throughput=" << (seconds > 0.0 ? n / seconds : 0.0) << " orders/s"
                   << " mean_us=" << (sum / n) << '\n';
         return 0;
     } catch (const std::exception& ex) {

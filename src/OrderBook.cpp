@@ -7,6 +7,9 @@ std::vector<Trade> OrderBook::addLimit(bool is_buy, std::int64_t price, std::int
     if (price <= 0 || qty <= 0) {
         throw std::invalid_argument("price and qty must be positive");
     }
+    if (next_id_ == 0) {
+        throw std::overflow_error("order id space exhausted");
+    }
     Order order;
     order.id = next_id_++;
     order.is_buy = is_buy;
