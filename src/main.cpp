@@ -37,10 +37,27 @@ std::vector<Tick> loadTicks(const std::string& path) {
         std::getline(ss, side, ',');
         std::getline(ss, price, ',');
         std::getline(ss, qty, ',');
+        auto trim = [](std::string s) {
+            while (!s.empty() && (s.back() == '\r' || s.back() == ' ' || s.back() == '\t')) {
+                s.pop_back();
+            }
+            std::size_t i = 0;
+            while (i < s.size() && (s[i] == ' ' || s[i] == '\t')) {
+                ++i;
+            }
+            return s.substr(i);
+        };
+        side = trim(side);
+        price = trim(price);
+        qty = trim(qty);
         Tick t;
         t.is_buy = (side == "B" || side == "BUY");
-        t.price = std::stoll(price);
-        t.qty = std::stoll(qty);
+        try {
+            t.price = std::stoll(price);
+            t.qty = std::stoll(qty);
+        } catch (const std::exception&) {
+            throw std::runtime_error("bad tick row: " + line);
+        }
         ticks.push_back(t);
     }
     return ticks;
