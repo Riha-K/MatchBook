@@ -43,11 +43,9 @@ bool OrderBook::cancel(std::uint64_t order_id) {
         }
         return true;
     };
-    const bool ok = loc.is_buy ? erase_from(bids_) : erase_from(asks_);
-    if (ok) {
-        index_.erase(found);
-    }
-    return ok;
+    const bool removed = loc.is_buy ? erase_from(bids_) : erase_from(asks_);
+    index_.erase(found);
+    return removed;
 }
 
 std::vector<Trade> OrderBook::match() {

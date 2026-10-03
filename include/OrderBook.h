@@ -27,7 +27,7 @@ class OrderBook {
 public:
     std::vector<Trade> addLimit(bool is_buy, std::int64_t price, std::int64_t qty);
     bool cancel(std::uint64_t order_id);
-    std::uint64_t lastId() const { return next_id_ - 1; }
+    std::uint64_t lastId() const { return next_id_ > 1 ? next_id_ - 1 : 0; }
     std::size_t bidLevels() const { return bids_.size(); }
     std::size_t askLevels() const { return asks_.size(); }
     const std::vector<Trade>& trades() const { return trades_; }

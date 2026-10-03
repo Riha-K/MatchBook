@@ -50,6 +50,9 @@ std::vector<Tick> loadTicks(const std::string& path) {
         side = trim(side);
         price = trim(price);
         qty = trim(qty);
+        if (side != "B" && side != "BUY" && side != "S" && side != "SELL") {
+            throw std::runtime_error("bad tick side: " + line);
+        }
         Tick t;
         t.is_buy = (side == "B" || side == "BUY");
         try {
