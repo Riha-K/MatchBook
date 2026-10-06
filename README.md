@@ -33,7 +33,7 @@ The binary prints a small demo, a tick-CSV back-test, then throughput and mean p
 
 ## Tick CSV
 
-Four columns, header included. `side` is `B` for buy or `S` for sell.
+Four columns, header included. `side` is `B` or `BUY` for buy, and `S` or `SELL` for sell.
 
 ```text
 ts,side,price,qty
