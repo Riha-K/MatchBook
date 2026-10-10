@@ -65,6 +65,9 @@ std::vector<Tick> loadTicks(const std::string& path) {
         } catch (const std::exception&) {
             throw std::runtime_error("bad tick row: " + line);
         }
+        if (t.qty <= 0) {
+            throw std::runtime_error("bad tick qty: " + line);
+        }
         ticks.push_back(t);
     }
     return ticks;
