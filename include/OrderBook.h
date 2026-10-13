@@ -26,6 +26,7 @@ struct Trade {
 
 class OrderBook {
 public:
+    // price and qty must be positive
     std::vector<Trade> addLimit(bool is_buy, std::int64_t price, std::int64_t qty);
     bool cancel(std::uint64_t order_id);
     std::uint64_t lastId() const { return next_id_ > 1 ? next_id_ - 1 : 0; }
