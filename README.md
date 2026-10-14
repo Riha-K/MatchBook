@@ -16,7 +16,7 @@ C++17, STL (`map`, `deque`, `unordered_map`), CSV replay, `<chrono>` benchmarks.
 
 Matching is single-threaded.
 
-Prices and quantities are 64-bit integers, so price comparison is exact. Cancel is O(1): an `unordered_map` from order id to its side and price level finds the queue without scanning the book.
+Prices and quantities are 64-bit integers, so price comparison is exact. A non-positive price or quantity is rejected. Cancel is O(1): an `unordered_map` from order id to its side and price level finds the queue without scanning the book.
 
 ## Run
 
