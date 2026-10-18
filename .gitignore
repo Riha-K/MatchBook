@@ -11,3 +11,4 @@ Makefile
 *.exe
 *.pdb
 *.log
+compile_commands.json
