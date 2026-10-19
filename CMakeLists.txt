@@ -16,3 +16,5 @@ add_executable(matchbook
 )
 
 target_include_directories(matchbook PRIVATE include)
+
+# Demo binary: order book + CSV tick replay + latency printout.
