@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <stdexcept>
 
+// Limit and market orders share the same matching path.
+
 std::vector<Trade> OrderBook::addLimit(bool is_buy, std::int64_t price, std::int64_t qty) {
     if (price <= 0 || qty <= 0) {
         throw std::invalid_argument("price and qty must be positive");
