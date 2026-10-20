@@ -8,6 +8,8 @@
 #include <unordered_map>
 #include <vector>
 
+// Price-time priority order book.
+
 struct Order {
     std::uint64_t id = 0;
     bool is_buy = true;
