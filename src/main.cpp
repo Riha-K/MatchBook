@@ -12,6 +12,8 @@
 #include <string>
 #include <vector>
 
+// CSV tick replay and simple latency timing.
+
 namespace {
 
 struct Tick {
