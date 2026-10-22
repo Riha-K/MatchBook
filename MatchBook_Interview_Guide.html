@@ -456,6 +456,31 @@ id3 fully filled (partial fill of the sell)</div>
   </div>
 </div>
 
+<div id="complexity" class="section">
+  <div class="sec-label">12b</div>
+  <h2 class="sec-title">Complexity &amp; trade-offs (say this out loud)</h2>
+  <p class="sec-intro">Interviewers often push on <strong>why map + deque</strong> instead of a heap or flat array. Have a clear answer ready.</p>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <h4>Add / cancel / match</h4>
+      <ul>
+        <li><strong>Add:</strong> locate price level in the ordered map, push to the back of that level’s deque (FIFO).</li>
+        <li><strong>Match:</strong> while best bid ≥ best ask, take from the fronts of both deques; shrink or erase empty levels.</li>
+        <li><strong>Cancel:</strong> id → (side, price) locator, then scan that level’s deque (fine for a teaching book; iterators would make cancel O(1)).</li>
+      </ul>
+    </div>
+    <div class="concept-card gold">
+      <h4>What I would not claim</h4>
+      <ul>
+        <li>This is not a production exchange matching engine.</li>
+        <li>No persistence, no networking, no multi-symbol sharding in this repo.</li>
+        <li>Latency numbers are local micro-benchmarks, not exchange SLAs.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tip-box"><strong>One sentence:</strong> “I picked ordered maps so the best price is always at the edge, and deques so same-price orders stay FIFO without reshuffling.”</div>
+</div>
+
 <div id="quick" class="section">
   <div class="sec-label">13</div>
   <h2 class="sec-title">Quick hits</h2>
