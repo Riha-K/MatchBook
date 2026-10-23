@@ -3,7 +3,21 @@
 #include <algorithm>
 #include <stdexcept>
 
-// Limit and market orders share the same matching path.
+// MatchBook order book implementation
+// ---------------------------------
+// Data layout:
+//   bids_ : std::map price -> deque of orders (best bid = begin(), highest price)
+//   asks_ : std::map price -> deque of orders (best ask = begin(), lowest price)
+//   index_: order id -> (side, price) so cancel can find the level quickly
+//
+// Matching rules (limit orders):
+//   - Match while best bid price >= best ask price
+//   - At a price level, FIFO: front of the deque trades first
+//   - Trade quantity = min(buy.qty, sell.qty); leftover stays on the book
+//   - Trade price recorded as the resting ask price (simple maker-style print)
+//
+// This file is intentionally single-threaded and in-memory — no networking,
+// persistence, or multi-symbol sharding. Good for explaining LLD + latency.
 
 std::vector<Trade> OrderBook::addLimit(bool is_buy, std::int64_t price, std::int64_t qty) {
     if (price <= 0 || qty <= 0) {
@@ -54,6 +68,7 @@ bool OrderBook::cancel(std::uint64_t order_id) {
 }
 
 std::vector<Trade> OrderBook::match() {
+    // Aggressive loop: keep crossing the top of book until prices no longer match.
     std::vector<Trade> filled;
     while (!bids_.empty() && !asks_.empty() && bids_.begin()->first >= asks_.begin()->first) {
         auto bid_it = bids_.begin();
