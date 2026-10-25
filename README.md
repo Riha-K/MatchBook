@@ -4,19 +4,35 @@ C++ matching engine that keeps bids and asks in memory, matches trades by price-
 
 ## Stack
 
-C++17, STL (`map`, `deque`, `unordered_map`), CSV replay, `<chrono>` benchmarks. No database on the matching path.
+C++17, STL (`map`, `deque`, `unordered_map`), CSV tick replay, `<chrono>` benchmarks. No database on the matching path. Matching is single-threaded.
 
-## Book
+## Book layout
 
-- **Bids:** `map<price, deque<Order>>` with highest price first
-- **Asks:** `map<price, deque<Order>>` with lowest price first
-- Same price follows arrival order (FIFO at that level)
-- **Add / cancel / match** for limit orders, including partial fills
-- Trades log leftover size on both sides
+| Side | Structure | Order |
+| --- | --- | --- |
+| Bids | `map<price, deque<Order>, greater<>>` | Highest price first |
+| Asks | `map<price, deque<Order>, less<>>` | Lowest price first |
+| Cancel index | `unordered_map<order_id, Locator>` | Side + price level for O(1) lookup |
 
-Matching is single-threaded.
+Same price follows arrival order (FIFO deque at that level). Prices and quantities are 64-bit integers, so comparison is exact. Non-positive price or quantity is rejected.
 
-Prices and quantities are 64-bit integers, so price comparison is exact. A non-positive price or quantity is rejected. Cancel is O(1): an `unordered_map` from order id to its side and price level finds the queue without scanning the book.
+## Operations
+
+- **Add limit** — assign id, try match, rest leftover size on the book
+- **Match** — while best bid ≥ best ask, trade min(qty); record leftover on both sides
+- **Cancel** — locate level via index, scan that price’s deque (O(L) at the level), erase
+
+Cancel is **not** amortized O(1) end-to-end: lookup is O(1), removing from the deque at that price is O(L). Say that clearly in interviews.
+
+## Complexity (typical)
+
+| Action | Cost |
+| --- | --- |
+| Add resting order | O(log P) map + deque push |
+| Match one price level | O(1) front ops until qty done |
+| Cancel | O(1) index + O(L) scan at level |
+
+P = distinct price levels on that side; L = orders at one price.
 
 ## Run
 
@@ -29,7 +45,13 @@ cmake --build build
 ./build/matchbook data/ticks.csv
 ```
 
-The binary prints a small demo, a tick-CSV back-test, then throughput and mean per-order latency.
+The binary prints:
+
+1. A small **demo** (add, partial fill, cancel)
+2. A **CSV back-test** replay
+3. A **benchmark** (throughput + mean / percentile latency per order)
+
+Prefer an optimised build when quoting latency numbers.
 
 ## Tick CSV
 
@@ -41,3 +63,13 @@ ts,side,price,qty
 2,B,100,4
 3,B,101,6
 ```
+
+## What this is / is not
+
+**Is:** in-memory limit order book, price-time priority, partial fills, CSV replay, chrono micro-benchmarks.
+
+**Is not:** market orders, stop orders, multi-symbol router, persistence, networking, multi-threaded matching, exchange risk checks.
+
+## Interview one-liner
+
+“MatchBook is a C++17 in-memory limit order book: bids and asks in ordered maps of FIFO queues, price-time matching with partial fills, cancel via id index, plus CSV replay and latency timing.”
