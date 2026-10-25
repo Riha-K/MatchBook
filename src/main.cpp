@@ -1,5 +1,6 @@
 #include "OrderBook.h"
 
+#include <algorithm>
 #include <cctype>
 #include <chrono>
 #include <cstdint>
@@ -131,11 +132,28 @@ int main(int argc, char** argv) {
         for (double u : us_per_order) {
             sum += u;
         }
+        std::sort(us_per_order.begin(), us_per_order.end());
+        auto percentile = [&](double p) -> double {
+            if (us_per_order.empty()) {
+                return 0.0;
+            }
+            const double idx = p * static_cast<double>(us_per_order.size() - 1);
+            const std::size_t lo = static_cast<std::size_t>(idx);
+            const std::size_t hi = std::min(lo + 1, us_per_order.size() - 1);
+            const double frac = idx - static_cast<double>(lo);
+            return us_per_order[lo] * (1.0 - frac) + us_per_order[hi] * frac;
+        };
         const double seconds = total_ms / 1000.0;
         std::cout << std::fixed << std::setprecision(3);
         std::cout << "n=" << n << " total_ms=" << total_ms
                   << " throughput=" << (seconds > 0.0 ? n / seconds : 0.0) << " orders/s"
-                  << " mean_us=" << (sum / n) << '\n';
+                  << " mean_us=" << (sum / n)
+                  << " p50_us=" << percentile(0.50)
+                  << " p95_us=" << percentile(0.95)
+                  << " p99_us=" << percentile(0.99) << '\n';
+        std::cout << "bench book bid_levels=" << bench.bidLevels()
+                  << " ask_levels=" << bench.askLevels()
+                  << " trades=" << bench.trades().size() << '\n';
         return 0;
     } catch (const std::exception& ex) {
         std::cerr << "error: " << ex.what() << '\n';
