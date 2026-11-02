@@ -73,3 +73,5 @@ ts,side,price,qty
 ## Interview one-liner
 
 “MatchBook is a C++17 in-memory limit order book: bids and asks in ordered maps of FIFO queues, price-time matching with partial fills, cancel via id index, plus CSV replay and latency timing.”
+
+<!-- refreshed: 2026-11-02 -->
